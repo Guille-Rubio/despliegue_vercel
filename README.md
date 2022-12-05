@@ -2,7 +2,7 @@
 Basic deploy of a Hello World Node.js backend with Express in Vercel
 
 
-## On your local project
+## In your local project
 1. Create a new node project\
     `npm init -y`
 2. Install Express\
@@ -66,7 +66,7 @@ In `vercel.json` use the following configuration
 `git push`
 
 
-## On Vercel
+## In Vercel
 1. SignUp/Log In and go to your dashboard `https://vercel.com/dashboard`
 2. Click on `Add new` > `project`
 3. Import your project by linking your gitHub repository
