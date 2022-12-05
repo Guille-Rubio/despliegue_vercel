@@ -76,6 +76,8 @@ In `vercel.json` use the following configuration
 7. On completion continue to dashboard
 8. Click on visit
 
+You can try the deployed version of this project [here](https://despliegue-vercel.vercel.app/) 
+
 
 
 
