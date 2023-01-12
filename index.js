@@ -18,7 +18,7 @@ app.get('/hello', (req, res) => {
 
 app.get('/pug', (req, res) => {
   try {
-    res.status(200).send('<h1>Prueba</h1>');
+    res.status(200).render('index.pug');
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
