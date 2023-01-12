@@ -17,7 +17,12 @@ app.get('/hello', (req, res) => {
 });
 
 app.get('/pug', (req, res) => {
-  res.status(200).render('index');
+  try {
+    res.status(200).render('index');
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+
 });
 
 
