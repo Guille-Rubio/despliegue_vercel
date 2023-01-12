@@ -16,13 +16,16 @@ app.get('/hello', (req, res) => {
   res.status(200).json({ msg: "route to /hello is ok" });
 });
 
+app.get('/send', (req, res) => {
+  res.status(200).send('<h1>Prueba ruta GET /send</h1>');
+});
+
 app.get('/pug', (req, res) => {
   try {
     res.status(200).render('./views/index.pug');
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
-
 });
 
 
