@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json({ extended: false }));
 app.set('view engine', 'pug');
 app.set('views', './views');
+app.engine('.pug', require('pug').__express);
 
 
 
