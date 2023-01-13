@@ -25,6 +25,7 @@ app.get('/pug', (req, res) => {//OK!!
   try {
     res.status(200).render('index.pug');
   } catch (error) {
+    console.log(error);
     res.status(400).json({ msg: error.message });
   }
 });
@@ -33,6 +34,7 @@ app.get('/send-file', (req, res) => {//OK
   try {
     res.status(200).sendFile(__dirname + '/views/index.html');
   } catch (error) {
+    console.log(error);
     res.status(400).json({ msg: error.message });
   }
 });
@@ -42,6 +44,7 @@ app.get('/film', (req, res) => {//OK!!
   try {
     res.status(200).render(__dirname + '/views/film.pug', { data: "Superman" });
   } catch (error) {
+    console.log(error);
     console.log(error);
     res.status(400).json({ msg: error.message });
   }
