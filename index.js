@@ -9,21 +9,16 @@ app.set('views', './views');
 
 
 
-app.get('/', (req, res) => {//OK
+app.get('/api', (req, res) => {//OK
   res.status(200).json({ msg: "Hello World" });
 });
 
-app.get('/hello', (req, res) => {//OK
+app.get('/api/hello', (req, res) => {//OK
   res.status(200).json({ msg: "route to /hello is ok" });
 });
 
-app.get('/send', (req, res) => {//OK
-  res.status(200).send('<h1>Prueba ruta GET /send</h1>');
-});
-
-app.get('/pug', (req, res) => {//OK!!
+app.get('/', (req, res) => {//OK!!
   try {
-    console.log("Prueba pug");
     res.status(200).render(__dirname + '/views/index.pug');
   } catch (error) {
     console.log(error);
@@ -45,16 +40,6 @@ app.get('/film', (req, res) => {//OK!!
   try {
     console.log("PRUEBA");
     res.status(200).render(__dirname + '/views/film.pug', { data: "Superman" });
-  } catch (error) {
-    console.log(error);
-    console.log(error);
-    res.status(400).json({ msg: error.message });
-  }
-});
-
-app.get('/aaaaa', (req, res) => {//OK!!
-  try {
-    res.status(200).render('film');
   } catch (error) {
     console.log(error);
     res.status(400).json({ msg: error.message });
