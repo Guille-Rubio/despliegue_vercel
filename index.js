@@ -23,7 +23,7 @@ app.get('/send', (req, res) => {//OK
 
 app.get('/pug', (req, res) => {//OK!!
   try {
-    res.status(200).render('index');
+    res.status(200).render('index.pug');
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
@@ -40,7 +40,7 @@ app.get('/send-file', (req, res) => {//OK
 
 app.get('/film', (req, res) => {//OK!!
   try {
-    res.status(200).render('film', { data: "Superman" });
+    res.status(200).render('film.pug', { data: "Superman" });
   } catch (error) {
     console.log(error);
     res.status(400).json({ msg: error.message });
