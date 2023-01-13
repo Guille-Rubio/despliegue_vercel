@@ -37,25 +37,10 @@ app.get('/send-file', (req, res) => {//OK
   }
 });
 
-app.get('/send-pug', (req, res) => {//descarga el archivo del navegador
-  try {
-    res.status(200).sendFile(__dirname + '/views/index.pug');
-  } catch (error) {
-    res.status(400).json({ msg: error.message });
-  }
-})
-
-app.get('/render-html', (req, res) => {//descarga el archivo del navegador
-  try {
-    res.status(200).render('./views/index.html');
-  } catch (error) {
-    res.status(400).json({ msg: error.message });
-  }
-})
 
 app.get('/film', (req, res) => {//OK!!
   try {
-    res.status(200).render('film');
+    res.status(200).render('film', { data: "Superman" });
   } catch (error) {
     console.log(error);
     res.status(400).json({ msg: error.message });
