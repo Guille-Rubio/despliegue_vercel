@@ -54,6 +54,14 @@ app.get('/render-html', (req, res) => {//descarga el archivo del navegador
 })
 
 
+app.get('/film', (req, res) => {
+  try {
+    res.status(200).render('film.pug', { data: "Superman" });
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+})
+
 
 app.listen(PORT, () => console.log(`Server is running in PORT ${PORT}`));
 
