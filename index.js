@@ -57,6 +57,7 @@ app.get('/film', (req, res) => {//OK!!
   try {
     res.status(200).render('film');
   } catch (error) {
+    console.log(error);
     res.status(400).json({ msg: error.message });
   }
 });
@@ -65,6 +66,7 @@ app.get('/aaaaa', (req, res) => {//OK!!
   try {
     res.status(200).render('film');
   } catch (error) {
+    console.log(error);
     res.status(400).json({ msg: error.message });
   }
 });
