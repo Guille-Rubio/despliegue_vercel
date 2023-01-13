@@ -23,7 +23,7 @@ app.get('/send', (req, res) => {//OK
 
 app.get('/pug', (req, res) => {//OK!!
   try {
-    res.status(200).render('index.pug');
+    res.status(200).render('index');
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
