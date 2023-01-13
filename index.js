@@ -40,7 +40,7 @@ app.get('/send-file', (req, res) => {//OK
 
 app.get('/film', (req, res) => {//OK!!
   try {
-    res.status(200).render('film.pug', { data: "Superman" });
+    res.status(200).render(__dirname + '/views/film.pug', { data: "Superman" });
   } catch (error) {
     console.log(error);
     res.status(400).json({ msg: error.message });
