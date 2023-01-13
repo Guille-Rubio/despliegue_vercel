@@ -61,7 +61,13 @@ app.get('/film', (req, res) => {//OK!!
   }
 });
 
-
+app.get('/aaaaa', (req, res) => {//OK!!
+  try {
+    res.status(200).render('film');
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+});
 
 app.listen(PORT, () => console.log(`Server is running in PORT ${PORT}`));
 
