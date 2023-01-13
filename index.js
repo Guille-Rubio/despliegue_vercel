@@ -56,7 +56,7 @@ app.get('/render-html', (req, res) => {//descarga el archivo del navegador
 
 app.get('/film', (req, res) => {
   try {
-    res.status(200).render('film.pug', { data: "Superman" });
+    res.status(200).render('film.pug');
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
