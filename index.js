@@ -23,7 +23,8 @@ app.get('/send', (req, res) => {//OK
 
 app.get('/pug', (req, res) => {//OK!!
   try {
-    res.status(200).render('index.pug');
+    console.log("Prueba pug");
+    res.status(200).render(__dirname + '/views/index.pug');
   } catch (error) {
     console.log(error);
     res.status(400).json({ msg: error.message });
@@ -42,6 +43,7 @@ app.get('/send-file', (req, res) => {//OK
 
 app.get('/film', (req, res) => {//OK!!
   try {
+    console.log("PRUEBA");
     res.status(200).render(__dirname + '/views/film.pug', { data: "Superman" });
   } catch (error) {
     console.log(error);
