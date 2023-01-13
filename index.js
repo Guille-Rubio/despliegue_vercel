@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json({ extended: false }));
 app.set('view engine', 'pug');
 app.set('views', './views');
-//app.engine('.pug', require('pug').__express);
+app.engine('.pug', require('pug').__express);
 
 
 
@@ -21,7 +21,7 @@ app.get('/send', (req, res) => {//OK
   res.status(200).send('<h1>Prueba ruta GET /send</h1>');
 });
 
-app.get('/pug', (req, res) => {//internal server error
+app.get('/pug', (req, res) => {//OK!!
   try {
     res.status(200).render('index.pug');
   } catch (error) {
