@@ -29,9 +29,9 @@ app.get('/pug', (req, res) => {
   }
 });
 
-app.get('/sendFile', (req, res) => {
+app.get('/send-file', (req, res) => {
   try {
-    res.status(200).sendFile('./views/index.html');
+    res.status(200).sendFile(__dirname + '/views/index.html');
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
