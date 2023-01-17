@@ -4,7 +4,6 @@ require('dotenv').config();
 const { connectSQL } = require('./config/sqlConnection');
 const PORT = process.env.PORT || 3000;
 
-
 const api = require('./routes/api');
 const films = require('./routes/films');
 
