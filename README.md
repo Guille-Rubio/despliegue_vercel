@@ -1,28 +1,65 @@
-# despliegue_vercel
-Basic deploy of a Hello World Node.js backend with Express in Vercel
+# despliegue_vercel con pug
+Deploy of a Hello World Node.js backend with Express in Vercel using pug as view engine.
 
 
 ## In your local project
 1. Create a new node project\
     `npm init -y`
-2. Install Express\
-    `npm i express`
+2. Install Express and pug\
+    `npm i express pug`
 3. Add your `index.js` to the root of the project\
     `touch index.js`
-4. Add your Express Hello World code 
+4. Add your app code to `index.js`
   ```
-  const express = require('express')
-  const app = express()
-  const port = 3000
-
+  const express = require('express');
+  const app = express();
+  const PORT = process.env.PORT || 8080;
+  
+  app.use(express.json({ extended: false }));
+  app.set('view engine', 'pug');
+  app.set('views', __dirname + '/views');
+  //app.engine('.pug', require('pug').__express);
+  
+  app.get('/api', (req, res) => {
+    res.status(200).json({ msg: "Hello World" });
+  });
+  
+  app.get('/api/hello', (req, res) => {
+    res.status(200).json({ msg: "route to /hello is ok" });
+  });
+  
   app.get('/', (req, res) => {
-    res.send('Hello World!')
-  })
-  app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-  })
+    try {
+      res.status(200).render('index.pug');
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ msg: error.message });
+    }
+  });
+  
+  app.get('/film', (req, res) => {
+    try {
+      res.status(200).render('film.pug', { data: "Superman" });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ msg: error.message });
+    }
+  });
+  
+  app.get('/send-file', (req, res) => {
+    try {
+      res.status(200).sendFile(__dirname + '/views/index.html');
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ msg: error.message });
+    }
+  });
+  
+  app.listen(PORT, () => console.log(`Server is running in PORT ${PORT}`));
   
   ```
+  
+
 5. Add your start script to `package.json`
 
 ```
@@ -58,7 +95,9 @@ In `vercel.json` use the following configuration
     `npm start`\
     in your browser visit:\
     `http://127.0.0.1:3000`,\
-    should print `Hello World!`
+    should print \
+    `Hola Mundo!`\
+    `Desplegado en Vercel`
 
 8. Commit and push your project
 `git add .`
@@ -77,7 +116,6 @@ In `vercel.json` use the following configuration
 8. Click on visit
 
 You can try the deployed version of this project [here](https://despliegue-vercel.vercel.app/) 
-
 
 
 
