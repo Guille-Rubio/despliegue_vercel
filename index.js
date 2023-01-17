@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
-const { connectSQL } = require('./config/sqlConnection');
+//const { connectSQL } = require('./config/sqlConnection');
 const PORT = process.env.PORT || 3000;
 
 const api = require('./routes/api');
@@ -37,7 +37,6 @@ app.get('/send-file', (req, res) => {
 
 app.listen(PORT, async () => {
   console.log(`Server is running in PORT ${PORT}`)
-  await connectSQL;
 });
 
 
