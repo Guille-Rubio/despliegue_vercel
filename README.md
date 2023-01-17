@@ -6,7 +6,7 @@ Deploy of a Hello World Node.js backend with Express in Vercel using pug as view
 1. Create a new node project\
     `npm init -y`
 2. Install Express and pug\
-    `npm i express pug`
+    `npm i express pug pg sequelize`
 3. Add your `index.js` to the root of the project\
     `touch index.js`
 4. Add your app code to `index.js`

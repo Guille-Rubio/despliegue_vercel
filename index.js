@@ -1,10 +1,14 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
+const { connectSQL } = require('./config/sqlConnection');
 const PORT = process.env.PORT || 3000;
+
 
 const api = require('./routes/api');
 const films = require('./routes/films');
 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ extended: false }));
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
@@ -32,7 +36,10 @@ app.get('/send-file', (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Server is running in PORT ${PORT}`));
+app.listen(PORT, async () => {
+  console.log(`Server is running in PORT ${PORT}`)
+  await connectSQL;
+});
 
 
 
