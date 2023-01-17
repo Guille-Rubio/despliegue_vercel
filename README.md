@@ -13,7 +13,7 @@ Deploy of a Hello World Node.js backend with Express in Vercel using pug as view
   ```
   const express = require('express');
   const app = express();
-  const PORT = process.env.PORT || 8080;
+  const PORT = process.env.PORT || 3000;
   
   app.use(express.json({ extended: false }));
   app.set('view engine', 'pug');
@@ -60,7 +60,10 @@ Deploy of a Hello World Node.js backend with Express in Vercel using pug as view
   ```
   
 
-5. Add your start script to `package.json`
+5. Add the views folder with the files in the views folder in this repository.
+
+
+6. Add your start script to `package.json`
 
 ```
 "scripts": {
@@ -69,7 +72,7 @@ Deploy of a Hello World Node.js backend with Express in Vercel using pug as view
   },
 ```
 
-6. Add `vercel.json` to the root of your project\
+7. Add `vercel.json` to the root of your project\
 `touch vercel.json`
 
 In `vercel.json` use the following configuration
@@ -91,7 +94,7 @@ In `vercel.json` use the following configuration
 }
 ```
 
-7. Test your app, run:\
+8. Test your app, run:\
     `npm start`\
     in your browser visit:\
     `http://127.0.0.1:3000`,\
@@ -99,7 +102,7 @@ In `vercel.json` use the following configuration
     `Hola Mundo!`\
     `Desplegado en Vercel`
 
-8. Commit and push your project
+9. Commit and push your project
 `git add .`
 `git commit -m "ADD deployment config"`
 `git push`
