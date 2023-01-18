@@ -1,10 +1,10 @@
 const Films = require('../schemas/films');
-const { db } = require('../config/sqlConnection');
+//const { db } = require('../config/sqlConnection');
 
 const getAllFilmsView = async (req, res) => {
     try {
-        //const allFilmsRaw = await Films.findAll();
-        const allFilmsRaw = await db.query('SELECT * FROM films;')
+        const allFilmsRaw = await Films.findAll();
+        //const allFilmsRaw = await db.query('SELECT * FROM films;')
         console.log(allFilmsRaw)
         const allFilms = allFilmsRaw.map((elm, i) => {
             return elm.dataValues.title
