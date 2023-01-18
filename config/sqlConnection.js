@@ -1,12 +1,12 @@
 const { Sequelize } = require('sequelize');
 
 const db = new Sequelize(
-    process.env.POSTGRES_DB,
+    //process.env.POSTGRES_DB,
     process.env.POSTGRES_USERNAME,
     process.env.POSTGRES_PASSWORD, {
     host: process.env.POSTGRES_HOST,
     dialect: "postgres",
-    pool: {//https://stackoverflow.com/questions/35525574/how-to-use-database-connections-pool-in-sequelize-js
+    pool: {//
         max: 5,
         min: 0,
         idle: 10000

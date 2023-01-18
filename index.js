@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 require('pg');
-//const { connectSQL } = require('./config/sqlConnection');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 
@@ -11,10 +10,9 @@ const films = require('./routes/films');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ extended: false }));
-app.use(express.static('public'));
+app.use('/favicon.ico', express.static('public/favicon.ico'));
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
-//app.engine('.pug', require('pug').__express);
 
 app.use('/api', api);
 app.use('/film', films);
@@ -27,7 +25,6 @@ app.get('/', (req, res) => {
     res.status(400).json({ msg: error.message });
   }
 });
-
 
 app.get('/send-file', (req, res) => {
   try {

@@ -48,7 +48,7 @@ Deploy of a Hello World Node.js backend with Express in Vercel using pug as view
   app.listen(PORT, () => console.log(`Server is running in PORT ${PORT}`));
   
   ```
-  
+  Remember to require('pg') in index.js to manually install postgres when deploying in Vercel
 
 5. Add your start script to `package.json`
 
