@@ -1,4 +1,5 @@
 const Films = require('../schemas/films');
+const scrapers = require('../utils/scraping/scraper');
 
 const getAllFilmsView = async (req, res) => {
     try {
@@ -28,9 +29,22 @@ const getFavouriteFilmView = async (req, res) => {
     }
 };
 
+
+const scrapFilms = async (req, res) => {
+    try {
+        const h2s = await scrapers.getPictureUrl();
+        res.status(200).json({ test: h2s })
+
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ msg: error.message })
+    }
+}
+
 const filmsControllers = {
     getAllFilmsView,
-    getFavouriteFilmView
+    getFavouriteFilmView,
+    scrapFilms
 };
 
 module.exports = filmsControllers;
