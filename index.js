@@ -1,7 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
-require('dotenv').config();
+require('pg');
 //const { connectSQL } = require('./config/sqlConnection');
+const path = require('path');
 const PORT = process.env.PORT || 3000;
 
 const api = require('./routes/api');
@@ -9,6 +11,7 @@ const films = require('./routes/films');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ extended: false }));
+app.use(express.static('public'));
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 //app.engine('.pug', require('pug').__express);
