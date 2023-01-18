@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 require('pg');
+require('puppeteer');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 
