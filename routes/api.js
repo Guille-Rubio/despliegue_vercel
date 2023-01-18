@@ -4,9 +4,9 @@ const apiControllers = require('../controllers/api');
 
 
 api.get('/', apiControllers.getAllFilms);
-api.get('/favorite', apiControllers.getFavouriteFilms);
-api.post('/', apiControllers.saveFilm);
-api.patch('/', apiControllers.saveFilmAsFavorite);
+//api.get('/favorite', apiControllers.getFavouriteFilms);
+//api.post('/', apiControllers.saveFilm);
+//api.patch('/', apiControllers.saveFilmAsFavorite);
 
 
 

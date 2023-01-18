@@ -5,8 +5,13 @@ const db = new Sequelize(
     process.env.POSTGRES_USERNAME,
     process.env.POSTGRES_PASSWORD, {
     host: process.env.POSTGRES_HOST,
-    dialect: "postgres"
-})
+    dialect: "postgres",
+    pool: {//https://stackoverflow.com/questions/35525574/how-to-use-database-connections-pool-in-sequelize-js
+        max: 5,
+        min: 0,
+        idle: 10000
+      }
+});
 
 const connectSQL = async () => {
     try {
@@ -15,11 +20,11 @@ const connectSQL = async () => {
     } catch (error) {
         console.error('Unable to connect to SQL database:', error);
     }
-}
+};
 
 module.exports = {
     connectSQL,
     db
-}
+};
 
  
