@@ -42,7 +42,7 @@ async function getOptions(isDev) {
 const getPictureUrl = async () => {
     console.log("plaform", process.platform);
     console.log("ExePath", exePath);
-    console.log("CHROME", chrome.executablePath);
+    console.log("CHROME", await chrome.executablePath);
     try {
         const options = await getOptions(false);
         const browser = await puppeteer.launch(options);
