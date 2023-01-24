@@ -1,10 +1,13 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
+require('chrome-aws-lambda');
 
 function delay(time) {
     return new Promise(function (resolve) {
         setTimeout(resolve, time)
     });
 }
+
+
 
 const exePath =
   process.platform === "win32"
@@ -35,7 +38,7 @@ async function getOptions(isDev) {
 //TODO - Review scrapper & arrange platform codes for the values in the application object
 
 const getPictureUrl = async () => {
-
+    console.log(process.platform);
     try {
         const options = await getOptions(false);
         const browser = await puppeteer.launch(options);
