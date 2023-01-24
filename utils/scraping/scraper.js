@@ -31,6 +31,21 @@ const getPictureUrl = async () => {
             headless: true,
             ignoreHTTPSErrors: true,
         };
+    } else {
+        const exePath =
+            process.platform === "win32"
+                ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+                : process.platform === "linux"
+                    ? "/usr/bin/google-chrome"
+                    : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+                    
+        options = {
+            args: [],
+            executablePath: exePath,
+            headless: true,
+
+        }
+
     }
 
     try {
