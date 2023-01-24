@@ -28,10 +28,11 @@ async function getOptions(isDev) {
         };
     } else {
         options = {
-            args: chrome.args,
-            defaultViewport: chromium.defaultViewport,
+            args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
+            defaultViewport: chrome.defaultViewport,
             executablePath: await chrome.executablePath,
-            headless: chrome.headless,
+            headless: true,
+            ignoreHTTPSErrors: true,
         };
     }
     return options;
@@ -45,7 +46,7 @@ const getPictureUrl = async () => {
     console.log("CHROME", await chrome.executablePath);
     console.log("DIRNAME", __dirname)
     try {
-        const options = await getOptions(false);
+        const options = await getOptions(true);
         const browser = await chrome.puppeteer.launch(options);
         //ACCESS TO MERCURIO
         const page = await browser.newPage();
