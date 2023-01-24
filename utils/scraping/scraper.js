@@ -18,10 +18,7 @@ function delay(time) {
 //TODO - Review scrapper & arrange platform codes for the values in the application object
 
 const getPictureUrl = async () => {
-    console.log("plaform", process.platform);
-    console.log("CHROME", await chrome.executablePath);
-    console.log("DIRNAME", __dirname)
-
+    console.log(process.env);
     let options = {};
     if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
         options = {
@@ -38,7 +35,6 @@ const getPictureUrl = async () => {
                 : process.platform === "linux"
                     ? "/usr/bin/google-chrome"
                     : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-                    
         options = {
             args: [],
             executablePath: exePath,
