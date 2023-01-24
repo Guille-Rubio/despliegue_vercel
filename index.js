@@ -4,6 +4,7 @@ const app = express();
 require('pg');
 
 const path = require('path');
+require('./utils/scraping/scraper');
 const PORT = process.env.PORT || 3000;
 
 const api = require('./routes/api');
