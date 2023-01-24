@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node index.js",
-    "dev":"NODE_ENV=development nodemon index.js",
+    "dev": "NODE_ENV=development nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,6 +15,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "^14"
+  },
   "bugs": {
     "url": "https://github.com/Guille-Rubio/despliegue_vercel/issues"
   },
