@@ -29,6 +29,7 @@ async function getOptions(isDev) {
     } else {
         options = {
             args: chrome.args,
+            defaultViewport: chromium.defaultViewport,
             executablePath: await chrome.executablePath,
             headless: chrome.headless,
         };
@@ -41,11 +42,11 @@ async function getOptions(isDev) {
 
 const getPictureUrl = async () => {
     console.log("plaform", process.platform);
-    console.log("ExePath", exePath);
     console.log("CHROME", await chrome.executablePath);
+    console.log("DIRNAME", __dirname)
     try {
         const options = await getOptions(false);
-        const browser = await puppeteer.launch(options);
+        const browser = await chrome.puppeteer.launch(options);
         //ACCESS TO MERCURIO
         const page = await browser.newPage();
         await page.goto('https://beta.fakestore.shop/');
