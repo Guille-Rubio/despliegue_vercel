@@ -2,7 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 require('pg');
-require('puppeteer');
+//require('puppeteer');
+require('chrome-aws-lambda');
+require('puppeteer-core');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 

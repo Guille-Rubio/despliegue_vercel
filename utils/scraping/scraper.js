@@ -6,12 +6,39 @@ function delay(time) {
     });
 }
 
+const exePath =
+  process.platform === "win32"
+    ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+    : process.platform === "linux"
+    ? "/usr/bin/google-chrome"
+    : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+
+async function getOptions(isDev) {
+  let options;
+  if (isDev) {
+    options = {
+      args: [],
+      executablePath: exePath,
+      headless: true,
+    };
+  } else {
+    options = {
+      args: chrome.args,
+      executablePath: await chrome.executablePath,
+      headless: chrome.headless,
+    };
+  }
+  return options;
+}
+
+
 //TODO - Review scrapper & arrange platform codes for the values in the application object
 
 const getPictureUrl = async () => {
 
     try {
-        const browser = await puppeteer.launch({ headless: true });
+        const options = await getOptions(false);
+        const browser = await puppeteer.launch(options);
         //ACCESS TO MERCURIO
         const page = await browser.newPage();
         await page.goto('https://beta.fakestore.shop/');
