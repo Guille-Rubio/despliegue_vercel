@@ -1,5 +1,7 @@
 const puppeteer = require('puppeteer-core');
-require('chrome-aws-lambda');
+const chrome = require('chrome-aws-lambda');
+
+//https://github.com/whitep4nth3r/puppeteer-demo
 
 function delay(time) {
     return new Promise(function (resolve) {
