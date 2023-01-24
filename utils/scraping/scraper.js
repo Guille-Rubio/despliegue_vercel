@@ -12,28 +12,28 @@ function delay(time) {
 ///tmp/chromium
 
 const exePath =
-  process.platform === "win32"
-    ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
-    : process.platform === "linux"
-    ? "/usr/bin/google-chrome"
-    : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+    process.platform === "win32"
+        ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+        : process.platform === "linux"
+            ? "/usr/bin/google-chrome"
+            : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 async function getOptions(isDev) {
-  let options;
-  if (isDev) {
-    options = {
-      args: [],
-      executablePath: exePath,
-      headless: true,
-    };
-  } else {
-    options = {
-      args: chrome.args,
-      executablePath: await chrome.executablePath,
-      headless: chrome.headless,
-    };
-  }
-  return options;
+    let options;
+    if (isDev) {
+        options = {
+            args: [],
+            executablePath: exePath,
+            headless: true,
+        };
+    } else {
+        options = {
+            args: chrome.args,
+            executablePath: await chrome.executablePath,
+            headless: chrome.headless,
+        };
+    }
+    return options;
 }
 
 
@@ -42,14 +42,15 @@ async function getOptions(isDev) {
 const getPictureUrl = async () => {
     console.log("plaform", process.platform);
     console.log("ExePath", exePath);
+    console.log("CHROME", chrome.executablePath);
     try {
         const options = await getOptions(false);
-        const browser = await chrome.puppeteer.launch(options);
+        const browser = await puppeteer.launch(options);
         //ACCESS TO MERCURIO
         const page = await browser.newPage();
         await page.goto('https://beta.fakestore.shop/');
         await page.waitForSelector('#app > section');
-        const h2s = await page.$$eval('h2', h2 => h2.map(h2 => h2.innerHTML.slice(0,h2.innerHTML.indexOf('<small>')).trim()));
+        const h2s = await page.$$eval('h2', h2 => h2.map(h2 => h2.innerHTML.slice(0, h2.innerHTML.indexOf('<small>')).trim()));
         await browser.close();
         return h2s
 
