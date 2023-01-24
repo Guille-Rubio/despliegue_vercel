@@ -43,7 +43,7 @@ const getPictureUrl = async () => {
     console.log("plaform", process.platform);
     console.log();
     try {
-        const options = await getOptions(true);
+        const options = await getOptions(false);
         const browser = await puppeteer.launch(options);
         //ACCESS TO MERCURIO
         const page = await browser.newPage();
