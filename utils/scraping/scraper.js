@@ -24,7 +24,7 @@ const getPictureUrl = async () => {
         options = {
             args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
             defaultViewport: chrome.defaultViewport,
-            executablePath: "/tmp/chromium",/* await chrome.executablePath */
+            executablePath: __dirname + "/tmp/chromium",/* await chrome.executablePath */
             headless: true,
             ignoreHTTPSErrors: true,
         };
