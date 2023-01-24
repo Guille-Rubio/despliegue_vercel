@@ -20,7 +20,7 @@ function delay(time) {
 const getPictureUrl = async () => {
     console.log(process.env);
     let options = {};
-    if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
+    if (process.env.NODE_ENV === "production") {
         options = {
             args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
             defaultViewport: chrome.defaultViewport,
