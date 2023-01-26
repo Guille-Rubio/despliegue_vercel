@@ -1,8 +1,7 @@
-# deployment vecel and puppeteer
+# Deployment of puppeteer in Vercel
 Deploy of a Node.js backend with Express using Puppeteer in Vercel.
 
 
-## In your local project
 
 1. Set production/development environments
 
