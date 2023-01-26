@@ -11,14 +11,7 @@ function delay(time) {
 }
 
 
-
-
-
-
-//TODO - Review scrapper & arrange platform codes for the values in the application object
-
-const getPictureUrl = async () => {
-    console.log(process.env);
+const getProductNames = async () => {
     let options = {};
     if (process.env.NODE_ENV === "production") {
         options = {
@@ -39,9 +32,7 @@ const getPictureUrl = async () => {
             args: [],
             executablePath: exePath,
             headless: true,
-
         }
-
     }
 
     try {
@@ -63,7 +54,7 @@ const getPictureUrl = async () => {
 };
 
 const scrapers = {
-    getPictureUrl
+    getProductNames
 };
 
 

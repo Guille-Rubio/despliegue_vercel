@@ -30,9 +30,9 @@ const getFavouriteFilmView = async (req, res) => {
 };
 
 
-const scrapFilms = async (req, res) => {
+const scrapProducts = async (req, res) => {
     try {
-        const h2s = await scrapers.getPictureUrl();
+        const h2s = await scrapers.getProductNames();
         res.status(200).json({ test: h2s })
 
     } catch (error) {
@@ -44,7 +44,7 @@ const scrapFilms = async (req, res) => {
 const filmsControllers = {
     getAllFilmsView,
     getFavouriteFilmView,
-    scrapFilms
+    scrapProducts
 };
 
 module.exports = filmsControllers;
