@@ -1,5 +1,5 @@
 # deployment vecel and puppeteer
-Deploy of a Node.js backend with Express in Vercel with Puppeteer
+Deploy of a Node.js backend with Express using Puppeteer in Vercel.
 
 
 ## In your local project
@@ -14,12 +14,11 @@ Edit your scripts in `package.json`
     "dev": "NODE_ENV=development nodemon index.js"
 ```
 
-
-2. Install `puppeteer-core` and `chrome-aws-lambda`
+2. Install `puppeteer-core` and `chrome-aws-lambda` from your terminal
 ```
 npm i puppeteer-core chrome-aws-lambda
 ```
-Please bear in mind that serverless functions in Vercel have a limit of 50mb, therefore we will need to use a lighter version of Puppeteer and Chromium, namely `puppeteer-core`and `chrome-aws-lambda`.
+Please bear in mind that serverless functions in Vercel have a limit of 50mb, therefore we will need to use a lighter version of Puppeteer and Chromium, `puppeteer-core` and `chrome-aws-lambda`.
 
 
 3. Edit `package.json` dependencies and node version
@@ -35,9 +34,9 @@ Please bear in mind that serverless functions in Vercel have a limit of 50mb, th
 ```
 
 
-4. Pass `options` to puppeteer. The options will change depending on the NODE_ENV value
+4. In your scraper file, pass `options` to puppeteer when launch. The options will switch depending on the `process.env.NODE_ENV` value, so your app access correctly to Chrome both in develpment and in production environment.
 ```
-let options = {};
+let options = {}; 
     if (process.env.NODE_ENV === "production") {
         options = {
             args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
@@ -87,7 +86,7 @@ const scrapper = async ()=>{
 
 6. Commit your changes
 
-7. Go to your project in Vercel and set your environment variables 
+7. Go to your project in [Vercel](https://vercel.com/dashboard) and set your environment variables 
 `NODE_ENV=production`
 
 Variables must be set before deployment
@@ -97,16 +96,10 @@ Variables must be set before deployment
 If you have your gitHub linked to Vercel
 `git push`
 
+You can visit the deployment of this project in [Vercel](https://despliegue-vercel-rama-express.vercel.app/)
 
+Also you can try the scraping [here](https://despliegue-vercel-rama-express.vercel.app/film/scrap)
 
-
-
-
-
-
-
-
-
-
+Thanks to [Mikael Kitas](https://github.com/michaelkitas/Puppeteer-Vercel/blob/master/index.js)
 
 
