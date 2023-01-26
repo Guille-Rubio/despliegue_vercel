@@ -65,7 +65,8 @@ In `vercel.json` use the following configuration
     `npm start`\
     in your browser visit:\
     `http://127.0.0.1:3000`,\
-    should print `Hello World!`
+    should print\
+    `{ "msg" : "Hello World!" }`\
 
 8. Commit and push your project
 `git add .`
