@@ -7,7 +7,7 @@ This project shows the steps to deploy a Node.js backend with Express. You can c
 - scraping: adds web scraping with puppeteer
 
 # Deployment in Vercel
-Basic deployment of a Hello World Node.js backend with Express in Vercel.
+Deployment of a Hello World Node.js backend with Express in Vercel.
 
 ## In your local project
 1. Create a new node project\
