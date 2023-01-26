@@ -1,6 +1,13 @@
-# despliegue_vercel
-Basic deploy of a Hello World Node.js backend with Express in Vercel
+This project shows the steps to deploy a Node.js backend with Express. You can checkout to the different branches to check the deployment:
 
+- main: Hello World with Express
+- pug: adds pug view engine
+- express_routing: adds express folder structure
+- sqldb: adds sequelize connection
+- scraping: adds web scraping with puppeteer
+
+# Deployment in Vercel
+Basic deployment of a Hello World Node.js backend with Express in Vercel.
 
 ## In your local project
 1. Create a new node project\
