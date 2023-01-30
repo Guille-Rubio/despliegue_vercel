@@ -1,5 +1,4 @@
 const Films = require('../schemas/films');
-const scrapers = require('../utils/scraping/scraper');
 
 const getAllFilmsView = async (req, res) => {
     try {

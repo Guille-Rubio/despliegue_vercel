@@ -83,17 +83,50 @@ const scrapper = async ()=>{
 }
 ```
 
-6. Commit your changes
+6. Test your app
 
-7. Go to your project in [Vercel](https://vercel.com/dashboard) and set your environment variables 
-`NODE_ENV=production`
+Test your app, run:
+`npm run dev`\
+in your browser visit:
+`http://127.0.0.1:3000/scrap`,
+should print:
+```
+{
+"test": [
+    "New Product",
+    "Brand Product",
+    "New Product Course",
+    "un gato",
+    "212",
+    "212",
+    "platzi-product",
+    "platzi-product",
+    "platzi-product",
+    "Perritos"
+    ]
+}
+```
+\
+7. Commit your changes
+
+\
+8. Go to your project in [Vercel](https://vercel.com/dashboard) and set your environment variables `NODE_ENV=production`
 
 Variables must be set before deployment
 
-8. Push your changes to Vercel
+9. Push your changes to Vercel
 
 If you have your gitHub linked to Vercel
 `git push`
+
+If not, 
+
+`vercel login` 
+
+and once loged in
+
+`vercel`
+
 
 You can visit the deployment of this project in [Vercel](https://despliegue-vercel-rama-express.vercel.app/)
 

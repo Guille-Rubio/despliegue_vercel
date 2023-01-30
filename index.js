@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 const api = require('./routes/api');
 const films = require('./routes/films');
+const scrap = require('./routes/scrap');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ extended: false }));
@@ -18,6 +19,7 @@ app.set('views', __dirname + '/views');
 
 app.use('/api', api);
 app.use('/film', films);
+app.use('/scrap', scrap);
 
 app.get('/', (req, res) => {
   try {

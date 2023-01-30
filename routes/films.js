@@ -4,6 +4,5 @@ const filmsControllers = require('../controllers/films');
 
 films.get('/', filmsControllers.getAllFilmsView);
 films.get('/favorite', filmsControllers.getFavouriteFilmView);
-films.get('/scrap', filmsControllers.scrapProducts);
 
 module.exports = films;
