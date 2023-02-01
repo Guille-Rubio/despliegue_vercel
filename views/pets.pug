@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Pets
+    body 
+        section 
+            form
+                label(for="") Name
+                input(type="text" name="petName" id="petName")
+                label(for="") Animal
+                input(type="text" name="animal" id="animal")
+                label(for="") Owner
+                input(type="text" name="owner" id="owner")
+                label(for="") ImageUrl
+                input(type="text" name="imageUrl" id="imageUrl") 
+                button(id="save-button") Save Pet
+        section 
+            each pet in pets 
+                article
+                    p  Pet name: #{pet.name}
+                    p Animal: #{pet.animal}
+                    p Owner: #{pet.owner}
+                    img(src=pet.imageUrl style="width:150px;")
+        script(src="/script.js") 

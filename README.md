@@ -1,5 +1,5 @@
 # Deployment of puppeteer in Vercel
-Deploy of a Node.js backend with Express using Puppeteer in Vercel.
+Deploy of a Node.js backend with Express using and MongoDb and mongoose in Vercel.
 
 
 
@@ -13,11 +13,12 @@ Edit your scripts in `package.json`
     "dev": "NODE_ENV=development nodemon index.js"
 ```
 
-2. Install `puppeteer-core` and `chrome-aws-lambda` from your terminal
+2. Install `mongodb` and `mongoose` from your terminal
+
 ```
-npm i puppeteer-core chrome-aws-lambda
+npm i mongodb mongoose
 ```
-Please bear in mind that serverless functions in Vercel have a limit of 50mb, therefore we will need to use a lighter version of Puppeteer and Chromium, `puppeteer-core` and `chrome-aws-lambda`.
+
 
 
 3. Edit `package.json` dependencies and node version
@@ -33,36 +34,64 @@ Please bear in mind that serverless functions in Vercel have a limit of 50mb, th
 ```
 
 
-4. In your scraper file, pass `options` to puppeteer when launch. The options will switch depending on the `process.env.NODE_ENV` value, so your app access correctly to Chrome both in develpment and in production environment.
-```
-let options = {}; 
-    if (process.env.NODE_ENV === "production") {
-        options = {
-            args: [...chrome.args, "--hide-scrollbars", "--disable-web-security"],
-            defaultViewport: chrome.defaultViewport,
-            executablePath: await chrome.executablePath,
-            headless: true,
-            ignoreHTTPSErrors: true,
-        };
-    } else {
-        const exePath =
-            process.platform === "win32"
-                ? "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
-                : process.platform === "linux"
-                    ? "/usr/bin/google-chrome"
-                    : "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-        options = {
-            args: [],
-            executablePath: exePath,
-            headless: true,
-        }
-    } 
+4. Set up your MongoDB connection in Atlas
 
-const scrapper = async ()=>{
-    const browser = await puppeteer.launch(options);
-    //My scraping code ...
-}
+Go to Mongo Atlas
+
+Create user, save your username and password in the .env
+
+Choose Cloud Environment for your cluster
+
+Add your IP
+
+Create the cluster
+
+Click connect 
+
+Click connect your application
+
+Copy your uri under section 2. Replace &lt;password&gt; with your saved password and save it as `MONGODB_URI` in your `.env`
+
+
+Connect your app to Mongo Altas in Express 
+
 ```
+const mongoose = require("mongoose");
+
+const connectMongoDb = async () => {
+
+    if (process.env.NODE_ENV === 'production') {
+        mongoose.connect(process.env.MONGODB_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            ssl: true
+        });
+
+        const db = mongoose.connection;//objeto de la conexion
+
+        // Eventos
+        db.on("error", error => console.log(error));
+        db.once("open", () => console.log("connection to db established"))
+    }
+
+    if (process.env.NODE_ENV === 'development') {
+        mongoose.connect('mongodb://127.0.0.1:27017/movieApp')
+
+        const db = mongoose.connection;//objeto de la conexion
+
+        // Eventos
+        db.on("error", error => console.log(error));
+        db.once("open", () => console.log("connection to db established"))
+
+    }
+}
+
+module.exports = { mongoose, connectMongoDb };
+
+```
+
+
+
 
 5. Add `vercel.json` to the root of your project 
 ```
@@ -132,6 +161,6 @@ You can visit the deployment of this project in [Vercel](https://despliegue-verc
 
 Also you can try the scraping [here](https://despliegue-vercel-rama-express.vercel.app/film/scrap)
 
-Thanks to [Mikael Kitas](https://github.com/michaelkitas/Puppeteer-Vercel/blob/master/index.js)
+
 
 
