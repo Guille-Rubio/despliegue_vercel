@@ -55,6 +55,8 @@ Copy your uri under section 2. Replace &lt;password&gt; with your saved password
 
 Connect your app to Mongo Altas in Express 
 
+
+
 ```
 const mongoose = require("mongoose");
 
@@ -120,20 +122,7 @@ in your browser visit:
 `http://127.0.0.1:3000/scrap`,
 should print:
 ```
-{
-"test": [
-    "New Product",
-    "Brand Product",
-    "New Product Course",
-    "un gato",
-    "212",
-    "212",
-    "platzi-product",
-    "platzi-product",
-    "platzi-product",
-    "Perritos"
-    ]
-}
+
 ```
 \
 7. Commit your changes

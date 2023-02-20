@@ -2,15 +2,16 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 require('pg');
-const {connectMongoDb}= require('./config/mongoDbConnection');
+const { connectMongoDb } = require('./config/mongoDbConnection');
 const path = require('path');
 require('./utils/scraping/scraper');
 const PORT = process.env.PORT || 3000;
 
-const api = require('./routes/api');
+const apiFilms = require('./routes/apiFilms');
+const apiPets = require('./routes/pets');
 const films = require('./routes/films');
-const scrap = require('./routes/scrap');
 const pets = require('./routes/pets');
+const scrap = require('./routes/scrap');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ extended: false }));
@@ -18,10 +19,11 @@ app.use(express.static('public'))
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 
-app.use('/api', api);
+app.use('/api/film', apiFilms);
+app.use('/api/pets',apiPets)
 app.use('/film', films);
 app.use('/scrap', scrap);
-app.use('/pets',pets);
+app.use('/pets', pets);
 
 app.get('/', (req, res) => {
   try {
